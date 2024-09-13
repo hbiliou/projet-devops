@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("UserName", "Username:")
+        @Html.TextBox("userName", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Email", "Email:")
+        @Html.TextBox("email", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Password", "Password:")
+        @Html.Password("password", null, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add User</button>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

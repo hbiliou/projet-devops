@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="nouhailaMiniProjet.MasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>  
+    <!-- Navigation -->
+    <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
+        <div class="container">
+            <a href="/login.aspx" class="navbar-brand">MyProps</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <% if (Request.Url.AbsolutePath.ToLower().EndsWith("/login.aspx")) { %>
+                        <li class="nav-item nav-link"><a href="Register.aspx">Register</a></li>
+                    <% } else { %>
+                        <li class="nav-item nav-link"><a href="Login.aspx">Login</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content -->
+    <div class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            <!-- This is where the content of your individual pages will be inserted -->
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <script src="Scripts/jquery-3.7.1.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

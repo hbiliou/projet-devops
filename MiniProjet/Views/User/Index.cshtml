@@ -1,0 +1,29 @@
+﻿@model List<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Actions</th> <!-- Add column for actions -->
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = user.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = user.Id }, new { onclick = "return confirm('Are you sure you want to delete this user?');" })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<nouhailaMiniProjet.Models.Comment>
+@{
+    ViewBag.Title = "Index";
+}
+<div id="map"></div>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 32.300833, lng: -6.10986 },
+            zoom: 6
+        });
+
+        var ads = @Html.Raw(Json.Encode(ViewBag.Ads)); // Deserialize ViewBag.Ads to JavaScript array
+
+        // Loop through ads and add markers to the map
+        for (var i = 0; i < ads.length; i++) {
+            addMarker(map, ads[i]);
+        }
+    }
+
+    function addMarker(map, ad) {
+        var marker = new google.maps.Marker({
+            position: { lat: ad.Latitude, lng: ad.Longitude },
+            map: map,
+            title: ad.Title
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: '<div><strong>' + ad.Title + '</strong><br>' + ad.Description + '</div>'
+        });
+
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9yA3YuBOD10_1qc_MQirIWZQFzt2WqEU&callback=initMap&region=MA">
+</script>

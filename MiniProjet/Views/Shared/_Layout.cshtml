@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        /* Custom CSS to remove underlining from navigation links */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
+        <div class="container">
+            <a href="../" class="navbar-brand">MyProps</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item nav-link">@Html.ActionLink("Ads", "Index", "Ads")</li>
+                    <li class="nav-item nav-link">@Html.ActionLink("Comments", "Index", "Comments")</li>
+                    <li class="nav-item nav-link">@Html.ActionLink("Category", "Index", "Categories")</li>
+                    <li class="nav-item nav-link">@Html.ActionLink("Manage Users", "Index", "User")</li>
+                    <li class="nav-item nav-link">@Html.ActionLink("Manage Roles", "Index", "Role")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content -->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>
